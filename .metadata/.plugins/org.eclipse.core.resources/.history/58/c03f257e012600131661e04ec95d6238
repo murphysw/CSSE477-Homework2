@@ -1,0 +1,19 @@
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
+
+import javax.swing.JFrame;
+
+
+public class ListingFrame extends JFrame {
+
+	public ListingFrame() {
+		super("Listing Frame");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(200,700);
+		this.setLocation(100,200);
+		this.setVisible(true);
+	}
+
+	
+
+}

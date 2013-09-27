@@ -1,0 +1,22 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class PluginManagerUI {
+	
+	private ExecutionFrame executionFrame;
+	private ListingFrame listingFrame;
+	private StatusFrame statusFrame;
+	
+	public PluginManagerUI() {
+		super();
+		setupUI();
+	}
+	
+	public void setupUI(){
+		executionFrame = new ExecutionFrame();
+		listingFrame = new ListingFrame();
+		statusFrame = new StatusFrame();
+	}
+
+}

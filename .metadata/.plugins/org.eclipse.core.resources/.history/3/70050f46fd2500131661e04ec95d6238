@@ -1,0 +1,20 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class PluginManagerUI {
+	
+	public void PluginManagerUI() {
+	}
+	
+	public void setupUI(){
+		JFrame mFrame = new JFrame("Execution Panel");
+		mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel mLabel = new JLabel("Hello World");
+		mFrame.getContentPane().add(mLabel);
+		mFrame.setSize(500,500);
+		mFrame.setVisible(true);
+	}
+
+}

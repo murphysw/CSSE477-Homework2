@@ -1,0 +1,17 @@
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
+
+import javax.swing.JFrame;
+
+
+public class StatusPanel extends JPanel {
+
+	public StatusFrame() {
+		super("Status Frame");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(500,200);
+		this.setLocation(300,700);
+		this.setVisible(true);
+	}
+
+}

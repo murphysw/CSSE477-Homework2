@@ -1,0 +1,36 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class PluginManagerUI {
+	
+	private ExecutionFrame executionFrame;
+	private ListingFrame listingFrame;
+	private StatusFrame statusFrame;
+	
+	public PluginManagerUI() {
+		super();
+		setupUI();
+	}
+	
+	public void setupUI(){
+		executionFrame = new ExecutionFrame("Execution Panel");
+		listingFrame = new ListingFrame("Listing Panel");
+		statusFrame = new StatusFrame("Status Panel");
+		executionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		listingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		statusFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		executionFrame.setSize(500,500);
+		listingFrame.setSize(200,700);
+		statusFrame.setSize(500,200);
+		executionFrame.setLocation(300,200);
+		listingFrame.setLocation(100,200);
+		statusFrame.setLocation(300,700);
+		executionFrame.setVisible(true);
+		listingFrame.setVisible(true);
+		statusFrame.setVisible(true);
+		
+		
+	}
+
+}

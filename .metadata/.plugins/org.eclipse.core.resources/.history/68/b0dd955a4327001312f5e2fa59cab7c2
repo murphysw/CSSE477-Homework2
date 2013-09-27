@@ -1,0 +1,15 @@
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
+
+public class ExecutionPanel extends JPanel {
+	
+	public ExecutionPanel() {
+		super();
+		setSize(400,500);
+		setLocation(200,0);
+		setBackground(Color.BLUE);
+		setVisible(true);
+	}
+}

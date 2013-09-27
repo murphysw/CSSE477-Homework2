@@ -1,0 +1,9 @@
+
+public class PluginManagerMain {
+	
+	public static void main(String[] args)
+	{
+		PluginManagerUI mUI = new PluginManagerUI();
+		mUI.setupUI();
+	}
+}

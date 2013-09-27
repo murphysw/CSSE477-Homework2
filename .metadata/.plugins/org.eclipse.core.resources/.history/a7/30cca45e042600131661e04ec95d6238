@@ -1,0 +1,14 @@
+import javax.swing.JFrame;
+
+
+public class ExecutionFrame extends JFrame {
+
+	public ExecutionFrame() {
+		super("Execution Frame");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(500,500);
+		this.setLocation(300,200);
+		this.setVisible(true);
+	}
+
+}

@@ -1,0 +1,16 @@
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
+
+public class StatusPanel extends JPanel {
+	
+	public StatusPanel() {
+		super();
+		setSize(100,100);
+		setLocation(200,400);
+		setBackground(Color.YELLOW);
+		this.setVisible(true);
+	}
+
+}

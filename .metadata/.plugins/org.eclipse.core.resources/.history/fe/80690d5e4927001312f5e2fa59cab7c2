@@ -1,0 +1,16 @@
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
+
+public class ListingPanel extends JPanel {
+	
+	public ListingPanel() {
+		super();
+		setSize(200,600);
+		setLocation(0, 0);
+		setBackground(Color.RED);
+		this.setVisible(true);
+	}
+
+}

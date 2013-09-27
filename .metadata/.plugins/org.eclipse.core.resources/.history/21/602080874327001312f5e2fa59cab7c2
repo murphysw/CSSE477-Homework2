@@ -1,0 +1,23 @@
+import javax.swing.JFrame;
+
+
+public class PluginManagerUI extends JFrame {
+
+	private ExecutionPanel executionPanel;
+	private ListingPanel listingPanel;
+	private StatusPanel statusPanel;
+	
+	public PluginManagerUI(){
+		super("Plugin Manager");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(700,700);
+		this.setLocation(400,200);
+		executionPanel = new ExecutionPanel();
+		listingPanel = new ListingPanel();
+		statusPanel = new StatusPanel();
+		this.getContentPane().add(executionPanel);
+		this.getContentPane().add(listingPanel);
+		this.getContentPane().add(statusPanel);
+		this.setVisible(true);
+	}
+}

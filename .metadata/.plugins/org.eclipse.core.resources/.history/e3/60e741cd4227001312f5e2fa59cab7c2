@@ -1,0 +1,11 @@
+import javax.swing.JPanel;
+
+
+public class ExecutionPanel extends JPanel {
+	
+	public ExecutionPanel() {
+		super();
+		setSize(500,500);
+		setVisible(true);
+	}
+}

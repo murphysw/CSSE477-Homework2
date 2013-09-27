@@ -1,0 +1,15 @@
+import javax.swing.*;
+
+public class PluginManagerMain {
+	
+	public static void main(String[] args)
+	{
+		JFrame mFrame = new JFrame("Execution Panel");
+		mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel mLabel = new JLabel("Hello World");
+		mFrame.getContentPane().add(mLabel);
+		mFrame.setSize(100,100);
+		mFrame.setVisible(true);
+	}
+}

@@ -1,0 +1,28 @@
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
+
+import javax.swing.JFrame;
+
+
+public class ListingFrame extends JFrame {
+
+	public ListingFrame() throws HeadlessException {
+		// TODO Auto-generated constructor stub
+	}
+
+	public ListingFrame(GraphicsConfiguration gc) {
+		super(gc);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ListingFrame(String title) throws HeadlessException {
+		super(title);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ListingFrame(String title, GraphicsConfiguration gc) {
+		super(title, gc);
+		// TODO Auto-generated constructor stub
+	}
+
+}

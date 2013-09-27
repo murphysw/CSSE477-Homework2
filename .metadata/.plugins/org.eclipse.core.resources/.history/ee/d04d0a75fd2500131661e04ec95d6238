@@ -1,0 +1,23 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class PluginManagerUI {
+	
+	private JFrame executionFrame;
+	private JFrame listingFrame;
+	private JFrame statusFrame;
+	
+	public void PluginManagerUI() {
+		setupUI();
+	}
+	
+	public void setupUI(){
+		executionFrame = new JFrame("Execution Panel");
+		executionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		executionFrame.setSize(500,500);
+		executionFrame.setVisible(true);
+	}
+
+}
