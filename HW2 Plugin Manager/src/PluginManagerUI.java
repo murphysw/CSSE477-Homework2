@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -40,5 +42,10 @@ public class PluginManagerUI extends JFrame {
 		c.gridwidth = 2;
 		this.getContentPane().add(statusPanel,c);
 		this.setVisible(true);
+	}
+	
+	//updates the list of files on the listing panel
+	public void updatePluginFolder(ArrayList<File> files){
+		this.listingPanel.updateListOfPlugins(files);
 	}
 }
