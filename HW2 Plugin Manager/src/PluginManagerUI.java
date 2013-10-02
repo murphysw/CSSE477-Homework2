@@ -45,7 +45,7 @@ public class PluginManagerUI extends JFrame {
 	}
 	
 	//updates the list of files on the listing panel
-	public void updatePluginFolder(ArrayList<File> files){
+	public void updatePluginFolder(ArrayList<String> files){
 		this.listingPanel.updateListOfPlugins(files);
 	}
 }

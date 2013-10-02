@@ -7,11 +7,11 @@ public class PluginManagerMain {
 	public static void main(String[] args)
 	{
 		PluginManagerUI mUI = new PluginManagerUI();
-		ArrayList<File> files = new ArrayList<File>();
+		ArrayList<String> files = new ArrayList<String>();
 
 		while(true){
-			ArrayList<File> newFiles = getListOfPlugins();
-			if (newFiles != files){
+			ArrayList<String> newFiles = getListOfPlugins();
+			if (newFiles.toString().compareTo( files.toString()) != 0){
 				mUI.updatePluginFolder(newFiles);
 				files = newFiles;
 			}
@@ -19,12 +19,12 @@ public class PluginManagerMain {
 	}
 
 	// pulls the list of files from the plugins folder
-	private static ArrayList<File> getListOfPlugins() {
-		ArrayList<File> plugins = new ArrayList<File>();
+	private static ArrayList<String> getListOfPlugins() {
+		ArrayList<String> plugins = new ArrayList<String>();
 		final File directory = new File("src/plugins");
 		for (final File file : directory.listFiles()){
 			if (file.getName().endsWith(".jar")){
-				plugins.add(file);
+				plugins.add(file.getName());
 			}
 		}
 		
