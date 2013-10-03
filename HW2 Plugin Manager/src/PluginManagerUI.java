@@ -41,11 +41,12 @@ public class PluginManagerUI extends JFrame {
 		c.gridx = 1;
 		c.gridy = 0;
 		c.gridheight = 1;
+		c.gridwidth = 2;
 		this.getContentPane().add(executionPanel,c);
 		c.weighty = 0.2;
 		c.gridx = 1;
 		c.gridy = 1;
-		c.gridwidth = 2;
+		c.gridwidth = 1;
 		this.getContentPane().add(statusPanel,c);
 		this.setVisible(true);
 	}

@@ -1,4 +1,4 @@
-import java.awt.Color;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -20,6 +20,7 @@ public class ExecutionPanel extends JPanel {
 		super();
 
 		setBackground(Color.BLUE);
+		setLayout(new BorderLayout());
 		setVisible(true);
 	}
 	
@@ -40,11 +41,18 @@ public class ExecutionPanel extends JPanel {
 	        String main = uc.getMainAttributes().getValue(Attributes.Name.MAIN_CLASS);
 	        	        
 			Class<?> aClass = classLoader.loadClass(main);
-			String[] thing = {};
+			PluginInterface plugin = (PluginInterface)aClass.newInstance();
+			Component c = plugin.getComponents();
+			this.add(c,BorderLayout.CENTER);
+			this.updateUI();
+			System.out.println("done");
+			
+			/*String[] thing = {};
 			try {
 				Method m = aClass.getMethod("main", thing.getClass());
 				m.setAccessible(true);
-				m.invoke(null, new Object[]{ thing });
+				//m.invoke(null, new Object[]{ thing });
+				this.add((Component)m.invoke(null, new Object[]{ thing }));
 			} catch (NoSuchMethodException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,12 +65,17 @@ public class ExecutionPanel extends JPanel {
 			} catch (InvocationTargetException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
+			
+			
 	        
 	        return true;
 	    } catch (ClassNotFoundException e) {
 	        e.printStackTrace();
 	    } catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -8,7 +8,7 @@ public class PluginManagerMain {
 	{
 		PluginManagerUI mUI = new PluginManagerUI();
 		ArrayList<String> files = new ArrayList<String>();
-
+		
 		while(true){
 			ArrayList<String> newFiles = getListOfPlugins();
 			if (newFiles.toString().compareTo( files.toString()) != 0){
