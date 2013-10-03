@@ -21,7 +21,7 @@ public class PluginManagerMain {
 	// pulls the list of files from the plugins folder
 	private static ArrayList<String> getListOfPlugins() {
 		ArrayList<String> plugins = new ArrayList<String>();
-		final File directory = new File("src/plugins");
+		final File directory = new File("plugins");
 		for (final File file : directory.listFiles()){
 			if (file.getName().endsWith(".jar")){
 				plugins.add(file.getName());

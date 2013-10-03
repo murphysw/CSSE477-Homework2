@@ -12,9 +12,11 @@ public class PluginManagerUI extends JFrame {
 	private ExecutionPanel executionPanel;
 	private ListingPanel listingPanel;
 	private StatusPanel statusPanel;
+	private PanelMessenger messenger;
 	
 	public PluginManagerUI(){
 		super("Plugin Manager");
+		this.messenger = new PanelMessenger();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(700,700);
 		this.setLocation(400,200);
@@ -22,6 +24,10 @@ public class PluginManagerUI extends JFrame {
 		executionPanel = new ExecutionPanel();
 		listingPanel = new ListingPanel();
 		statusPanel = new StatusPanel();
+		messenger.setPanels(executionPanel, listingPanel, statusPanel);
+		executionPanel.setMessenger(messenger);
+		listingPanel.setMessenger(messenger);
+		statusPanel.setMessenger(messenger);
 		this.getContentPane().setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
@@ -37,7 +43,7 @@ public class PluginManagerUI extends JFrame {
 		c.gridheight = 1;
 		this.getContentPane().add(executionPanel,c);
 		c.weighty = 0.2;
-		c.gridx = 0;
+		c.gridx = 1;
 		c.gridy = 1;
 		c.gridwidth = 2;
 		this.getContentPane().add(statusPanel,c);
@@ -47,5 +53,6 @@ public class PluginManagerUI extends JFrame {
 	//updates the list of files on the listing panel
 	public void updatePluginFolder(ArrayList<String> files){
 		this.listingPanel.updateListOfPlugins(files);
+		
 	}
 }

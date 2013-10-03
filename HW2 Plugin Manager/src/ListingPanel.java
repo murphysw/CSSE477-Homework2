@@ -1,39 +1,85 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 
-import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 
-public class ListingPanel extends JPanel implements ListSelectionListener {
+public class ListingPanel extends JPanel implements ListSelectionListener, ActionListener {
 	DefaultListModel<String> listModel;
+	JList<String> list;
+	PanelMessenger messenger;
 	public ListingPanel() {
 		super();
+		
 		setBackground(Color.RED);
 		this.setVisible(true);
+		listModel = new DefaultListModel<String>();
+		list = new JList<String>(listModel);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setSelectedIndex(0);
+		list.addListSelectionListener(this);
+		list.setVisibleRowCount(5);
+		JScrollPane listScrollPane = new JScrollPane(list);
+		listScrollPane.setVisible(true);
+		listScrollPane.setSize(200,200);
+		this.setLayout(new BorderLayout());
+		this.add(listScrollPane,BorderLayout.CENTER);
+		JButton refresh = new JButton("Refresh");
+		refresh.setPreferredSize(new Dimension(100,100));
+		refresh.addActionListener(this);
+		refresh.setActionCommand("refresh");
+		this.add(refresh, BorderLayout.PAGE_END);
 	}
 
+	
 	public void updateListOfPlugins(ArrayList<String> files) {
-		// TODO display the list of files
-		this.removeAll();
 		listModel = new DefaultListModel<String>();
 		for(String file : files){
 			listModel.addElement(file);
 			System.out.println(file.toString());
-			JLabel label = new JLabel(file);
-			this.add(label);
 		}
-		
-		this.paintAll(this.getGraphics());
+		list.setModel(listModel);
+		this.paint(this.getGraphics());
+		this.messenger.sendMessageToStatus("The plugins folder has been updated!");
 		return;
 		
 	}
 
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getActionCommand().equals("refresh"))
+		{
+			ArrayList<String> mStrings = new ArrayList<String>();
+			mStrings.add("hello");
+			mStrings.add("hi");
+			updateListOfPlugins(mStrings);
+		}
+	}
+
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		String file = list.getSelectedValue();
+		this.messenger.switchToPlugin(file);
+		this.messenger.sendMessageToStatus("Plugin has been switched to " + file);
+	}
+
+
+	public void setMessenger(PanelMessenger messenger) {
+		this.messenger = messenger;
 	}
 
 }
