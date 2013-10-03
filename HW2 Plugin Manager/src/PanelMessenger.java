@@ -19,7 +19,7 @@ public class PanelMessenger {
 
 	public void switchToPlugin(String file) throws IOException {
 		if (executionPanel.updateExecutedPlugin(file)){
-			sendMessageToStatus("Plugin has been switched to " + file);
+			sendMessageToStatus("Plugin has been installed and switched to " + file);
 		}else
 		{
 			sendMessageToStatus("Plugin did not load properly");

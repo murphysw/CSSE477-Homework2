@@ -26,7 +26,6 @@ public class StatusPanel extends JPanel {
         
         this.setLayout(new BorderLayout());
 		this.add(scrollPanel,BorderLayout.CENTER);
-//		this.add(scrollPanel);
         this.setVisible(true);
 	}
 	

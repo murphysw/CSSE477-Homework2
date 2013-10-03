@@ -1,11 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
 
 
-public interface PluginInterface {
+public abstract class PluginInterface extends Observable{
 	
-	public Component getComponents();
+	public abstract Component getComponents();
 	
-	public void printStatus();
+	public void notify(Object o) {
+        this.setChanged();
+        this.notifyObservers(o);
+    }
+	
+	public void postStatus(String s) {
+		notify(s);
+	}
 
 }

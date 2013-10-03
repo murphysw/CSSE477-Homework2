@@ -18,7 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 
-public class ListingPanel extends JPanel implements ListSelectionListener, ActionListener {
+public class ListingPanel extends JPanel implements ListSelectionListener {
 	DefaultListModel<String> listModel;
 	JList<String> list;
 	PanelMessenger messenger;
@@ -38,11 +38,6 @@ public class ListingPanel extends JPanel implements ListSelectionListener, Actio
 		listScrollPane.setSize(200,200);
 		this.setLayout(new BorderLayout());
 		this.add(listScrollPane,BorderLayout.CENTER);
-		JButton refresh = new JButton("Refresh");
-		refresh.setPreferredSize(new Dimension(100,100));
-		refresh.addActionListener(this);
-		refresh.setActionCommand("refresh");
-		this.add(refresh, BorderLayout.PAGE_END);
 	}
 
 	
@@ -57,18 +52,6 @@ public class ListingPanel extends JPanel implements ListSelectionListener, Actio
 		this.messenger.sendMessageToStatus("The plugins folder has been updated!");
 		return;
 		
-	}
-
-	
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		if(arg0.getActionCommand().equals("refresh"))
-		{
-			ArrayList<String> mStrings = new ArrayList<String>();
-			mStrings.add("hello");
-			mStrings.add("hi");
-			updateListOfPlugins(mStrings);
-		}
 	}
 
 	@Override

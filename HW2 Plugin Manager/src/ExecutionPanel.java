@@ -9,12 +9,14 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.jar.Attributes;
 
 import javax.swing.JPanel;
 
 
-public class ExecutionPanel extends JPanel {
+public class ExecutionPanel extends JPanel implements Observer {
 	private PanelMessenger messenger;
 	public ExecutionPanel() {
 		super();
@@ -33,43 +35,26 @@ public class ExecutionPanel extends JPanel {
 	        File file = new File("plugins", jarName);
 	        
 	        URI uri = file.toURI();
-//	        System.out.println(file.toURI().getPath());
 	        URL url = new URL("jar:" + uri + "!/");
 	        URL[] urls = {url};
 	        URLClassLoader classLoader = new URLClassLoader(urls);
 	        JarURLConnection uc = (JarURLConnection)url.openConnection();
 	        String main = uc.getMainAttributes().getValue(Attributes.Name.MAIN_CLASS);
-	        	        
-			Class<?> aClass = classLoader.loadClass(main);
-			PluginInterface plugin = (PluginInterface)aClass.newInstance();
-			Component c = plugin.getComponents();
-			this.add(c,BorderLayout.CENTER);
-			this.updateUI();
-			System.out.println("done");
-			
-			/*String[] thing = {};
-			try {
-				Method m = aClass.getMethod("main", thing.getClass());
-				m.setAccessible(true);
-				//m.invoke(null, new Object[]{ thing });
-				this.add((Component)m.invoke(null, new Object[]{ thing }));
-			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+	        if(main != null)
+	        {
+				Class<?> aClass = classLoader.loadClass(main);
+				PluginInterface plugin = (PluginInterface)aClass.newInstance();
+				plugin.addObserver(this);
+				Component c = plugin.getComponents();
+				this.removeAll();
+				this.add(c,BorderLayout.CENTER);
+				this.updateUI();
+				return true;
+	        }
 			
 			
 	        
-	        return true;
+	        return false;
 	    } catch (ClassNotFoundException e) {
 	        e.printStackTrace();
 	    } catch (IllegalAccessException e) {
@@ -80,5 +65,12 @@ public class ExecutionPanel extends JPanel {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		if(arg0 instanceof PluginInterface) {
+			messenger.sendMessageToStatus((String)arg1);
+		}
 	}
 }
