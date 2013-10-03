@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -72,9 +73,17 @@ public class ListingPanel extends JPanel implements ListSelectionListener, Actio
 
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
-		String file = list.getSelectedValue();
-		this.messenger.switchToPlugin(file);
-		this.messenger.sendMessageToStatus("Plugin has been switched to " + file);
+		if (!arg0.getValueIsAdjusting()){
+			@SuppressWarnings("unchecked")
+			JList<String> jList = (JList<String>)(arg0.getSource());
+			String file = jList.getSelectedValue();
+			try {
+				this.messenger.switchToPlugin(file);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 

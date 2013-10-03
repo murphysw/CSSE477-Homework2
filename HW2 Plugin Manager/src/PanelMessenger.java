@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 
 public class PanelMessenger {
 	private ExecutionPanel executionPanel;
@@ -15,8 +17,13 @@ public class PanelMessenger {
 		statusPanel.addStringToStatus(message);
 	}
 
-	public void switchToPlugin(String file) {
-		// TODO Auto-generated method stub
+	public void switchToPlugin(String file) throws IOException {
+		if (executionPanel.updateExecutedPlugin(file)){
+			sendMessageToStatus("Plugin has been switched to " + file);
+		}else
+		{
+			sendMessageToStatus("Plugin did not load properly");
+		}
 		
 	}
 }
